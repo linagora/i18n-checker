@@ -1,0 +1,40 @@
+{
+  "name": "i18n-checker",
+  "version": "1.0.0",
+  "description": "A JS library to validate translation files",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "keywords": [
+    "i18n",
+    "translation",
+    "validator",
+    "checker"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://ci.open-paas.org/stash/scm/or/i18n-checker.git"
+  },
+  "author": "Linagora folks <dev@linagora.com>",
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "grunt": "^1.0.1",
+    "grunt-eslint": "^19.0.0",
+    "grunt-mocha-test": "^0.13.2",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "load-grunt-tasks": "^3.5.2",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "colors": "1.1.2",
+    "json-dup-key-validator": "1.0.0",
+    "lodash": "4.17.4",
+    "q": "1.4.1"
+  }
+}
