@@ -6,6 +6,7 @@ const AVAILABLE_RULES = [
   'all-keys-translated',
   'all-locales-present',
   'default-locale-translate',
+  'no-duplicate-among-modules',
   'no-duplicate-with-core',
   'valid-json-file'
 ];

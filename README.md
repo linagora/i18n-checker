@@ -79,6 +79,10 @@ In translation file of the default locale, value must have the same value as key
 
 Keys are translated in core module must not be translated again in modules.
 
+### no-duplicate-among-modules
+
+Keys are duplicated between modules should be in core.
+
 #### all-keys-translated
 
 All keys translated in default locale must be translated in other locales.
