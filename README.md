@@ -1,11 +1,11 @@
 # i18n-checker
 
-Validate translation files
+> Validate translation files
 
 ## Usage
 
 ```javascript
-checker(options, (err, report) =>{
+checker(options, (err, report) => {
   if (err) {
     console.log(err);
   } else {
@@ -15,15 +15,16 @@ checker(options, (err, report) =>{
 ```
 
 Where `options` is an object with:
-- `baseDir`: the absolute path to the base directory that contains directories to scan
-- `dirs`: list of directories, in which:
- - `localeDir`: relative path to the directory containing locale files (`.json` files)
- - `core`: `true` if current directory contains core locale files. One of the
- directories in the list must be marked as core.
-- `verifyOptions`: options to verify locale files
- - `defaultLocale`: the default locale (default: `'en'`)
- - `locales`: list of locales (e.g. `['en', 'fr', 'vi']`)
- - `rules`: list of rules to check (omit to check all rules)
+
+* `baseDir`: the absolute path to the base directory that contains directories to scan
+* `dirs`: list of directories, in which:
+  * `localeDir`: relative path to the directory containing locale files (`.json` files)
+  * `core`: `true` if current directory contains core locale files. One of the
+  directories in the list must be marked as core.
+* `verifyOptions`: options to verify locale files
+  * `defaultLocale`: the default locale (default: `'en'`)
+  * `locales`: list of locales (e.g. `['en', 'fr', 'vi']`)
+  * `rules`: list of rules to check (omit to check all rules)
 
 ### Example
 
