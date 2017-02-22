@@ -4,7 +4,7 @@
   "description": "A JS library to validate translation files",
   "main": "src/index.js",
   "scripts": {
-    "test": "gulp"
+    "test": "grunt"
   },
   "keywords": [
     "i18n",
@@ -26,8 +26,6 @@
     "grunt": "^1.0.1",
     "grunt-eslint": "^19.0.0",
     "grunt-mocha-test": "^0.13.2",
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^3.0.1",
     "load-grunt-tasks": "^3.5.2",
     "mocha": "^3.2.0"
   },
