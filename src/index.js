@@ -1,16 +1,12 @@
 const q = require('q');
+const path = require('path');
+const fs = require('fs');
 const utils = require('./utils');
 const { DEFAULT_LOCALE } = require('./constants');
 
-const AVAILABLE_RULES = [
-  'all-keys-translated',
-  'all-locales-present',
-  'default-locale-translate',
-  'no-duplicate-among-modules',
-  'no-duplicate-with-core',
-  'no-untranslated-key',
-  'valid-json-file'
-];
+const rulesDir = path.join(__dirname, 'rules');
+const AVAILABLE_RULES = fs.readdirSync(rulesDir)
+  .map(filePath => filePath.replace(/\.js$/, ''));
 
 function getRules(ruleIds = AVAILABLE_RULES) {
   return ruleIds.map(ruleId => ({
