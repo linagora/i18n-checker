@@ -75,6 +75,10 @@ All directories must contain translation files for all locales defined in
 
 In translation file of the default locale, value must have the same value as key.
 
+#### key-trimmed
+
+No white space character at the beginning or the end of the key.
+
 ### no-duplicate-among-modules
 
 Keys are duplicated between modules should be in core.
