@@ -1,0 +1,19 @@
+.clickable.inbox-item-with-icon.text-danger(title="#{__('Your account %s is currently unavailable.', '{{ ::account.name }}')} #{__('You can click to retry')}")
+  .badge-container
+    i.inbox-icon.mdi.mdi-alert-circle
+    span.menu-item-inner
+  .menu-item
+    bdi #{__("Hahaha")}
+  span.menu-item-after
+
+.modal.calendar-configuration-delete-confirmation
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h4.modal-title #{__('Confirmation')}
+      .modal-body
+        span #{__('Remove "%s" and all events it contains?', "{{::calendarName}}")}
+        span #{__("Remove \"%s\" and all events it contains?", "{{::calendarName}}")}
+      .modal-footer
+        button.btn.btn-default(type="button", ng-click="$hide()") #{__('I')}
+        button.btn.btn-danger(type="button", ng-click="delete(); $hide()") #{__('Delete')}
