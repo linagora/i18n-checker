@@ -8,6 +8,7 @@ const AVAILABLE_RULES = [
   'default-locale-translate',
   'no-duplicate-among-modules',
   'no-duplicate-with-core',
+  'no-untranslated-key',
   'valid-json-file'
 ];
 

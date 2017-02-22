@@ -1,6 +1,7 @@
 const fs = require('fs');
 const q = require('q');
 const path = require('path');
+const jade = require('./jade');
 
 function listFilesInDir(dirPath) {
   try {
@@ -16,6 +17,10 @@ function readJsonFile(filePath) {
   } catch (err) {
     return {};
   }
+}
+
+function getKeysInJsonFile(filePath) {
+  return Object.keys(readJsonFile(filePath));
 }
 
 function getAvailableLocaleFilesInDir(baseDir, dir, locales) {
@@ -48,6 +53,8 @@ function qualifyFilePath(baseDir, filePath) {
 module.exports = {
   listFilesInDir,
   readJsonFile,
+  getKeysInJsonFile,
   getAvailableLocaleFilesInDir,
-  qualifyFilePath
+  qualifyFilePath,
+  jade
 };

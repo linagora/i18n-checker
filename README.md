@@ -62,30 +62,34 @@ checker(options, (err, report) {
 
 ### Rules
 
+#### all-keys-translated
+
+All keys translated in default locale must be translated in other locales.
+
 #### all-locales-present
 
 All directories must contain translation files for all locales defined in
 `options.verifyOptions.locales` list.
 
-#### valid-json-file
-
-Every translation files must be valid JSON file and has no duplicate keys.
-
 #### default-locale-translate
 
 In translation file of the default locale, value must have the same value as key.
-
-#### no-duplicate-with-core
-
-Keys are translated in core module must not be translated again in modules.
 
 ### no-duplicate-among-modules
 
 Keys are duplicated between modules should be in core.
 
-#### all-keys-translated
+#### no-duplicate-with-core
 
-All keys translated in default locale must be translated in other locales.
+Keys are translated in core module must not be translated again in modules.
+
+#### no-untranslated-key
+
+All keys used in template files must be translated.
+
+#### valid-json-file
+
+Every translation files must be valid JSON file and has no duplicate keys.
 
 ## Development
 
