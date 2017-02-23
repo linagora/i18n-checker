@@ -79,7 +79,7 @@ In translation file of the default locale, value must have the same value as key
 
 No white space character at the beginning or the end of the key.
 
-### no-duplicate-among-modules
+#### no-duplicate-among-modules
 
 Keys are duplicated between modules should be in core.
 
@@ -90,6 +90,13 @@ Keys are translated in core module must not be translated again in modules.
 #### no-untranslated-key
 
 All keys used in template files must be translated.
+
+#### no-unused-key
+
+All locale keys defined in core module must be used in core's template files or
+modules's template files.
+
+All locale keys defined in a module must be used in that module's template files.
 
 #### valid-json-file
 
@@ -133,9 +140,8 @@ module.exports = function(options) {
   return q(report);
 }
 ```
-3/ Add `rule-id` to `AVAILABLE_RULES` in `src/index.js`.
 
-4/ Update documentation and write test for the new rule.
+3/ Update documentation and write test for the new rule.
 
 ## Licence
 
