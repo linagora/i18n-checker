@@ -4,8 +4,14 @@ const colors = require('colors/safe');
 
 function standard(reports) {
   if (!reports.length) {
-    return console.log(colors.green('Passed!'));
+    return {
+      error: 0,
+      warning: 0
+    };
   }
+
+  let numberOfErrors = 0;
+  let numberOfWarnings = 0;
 
   // sort by filePath
   reports.sort((a, b) => {
@@ -27,11 +33,24 @@ function standard(reports) {
     console.log(colors.underline(report.filePath));
 
     report.messages.forEach((message) => {
-      const severity = message.severity === 2 ? colors.red('error') : colors.yellow('warning');
+      let severity;
+
+      if (message.severity === 2) {
+        severity = colors.red('error');
+        numberOfErrors += 1;
+      } else {
+        severity = colors.yellow('warning');
+        numberOfWarnings += 1;
+      }
 
       console.log('  ', severity, '  ', message.message, '  ', colors.gray(message.ruleId));
     });
   });
+
+  return {
+    error: numberOfErrors,
+    warning: numberOfWarnings
+  };
 }
 
 module.exports = {
