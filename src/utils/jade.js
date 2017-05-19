@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const KEY_REGEX = /#{__\((['"])(.*?)([^\\])\1/g;
+const I18N_KEYS_REGEX = /[!#]{__\((['"])(.*?)([^\\])\1/g;
 
 function extractKeysInFile(filePath) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -14,11 +14,11 @@ function extractKeys(jadeContent) {
   }
 
   const keys = [];
-  let match = KEY_REGEX.exec(jadeContent);
+  let match = I18N_KEYS_REGEX.exec(jadeContent);
 
   while (match !== null) {
     keys.push(match[2] + match[3]);
-    match = KEY_REGEX.exec(jadeContent);
+    match = I18N_KEYS_REGEX.exec(jadeContent);
   }
 
   return keys;
