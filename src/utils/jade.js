@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const I18N_KEYS_REGEX = /[!#]{__\((['"])(.*?)([^\\])\1/g;
+const I18N_KEYS_REGEX = /__\((['"])(.*?)([^\\])\1/g;
 
 function extractKeysInFile(filePath) {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
