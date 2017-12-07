@@ -1,6 +1,6 @@
 {
   "name": "i18n-checker",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A JS library to validate translation files",
   "main": "src/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://ci.open-paas.org/stash/scm/or/i18n-checker.git"
+    "url": "https://github.com/linagora/i18n-checker"
   },
   "author": "Linagora folks <dev@linagora.com>",
   "license": "AGPL-3.0",
