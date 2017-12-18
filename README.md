@@ -29,7 +29,7 @@ Where `options` is an object with:
 ### Example
 
 ```javascript
-const checker = require('i18n-checker');
+const checker = require('@linagora/i18n-checker');
 const reporter = checker.reporters.standard;
 
 const options = {

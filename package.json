@@ -1,6 +1,6 @@
 {
-  "name": "i18n-checker",
-  "version": "2.0.1",
+  "name": "@linagora/i18n-checker",
+  "version": "2.0.3",
   "description": "A JS library to validate translation files",
   "main": "src/index.js",
   "scripts": {
