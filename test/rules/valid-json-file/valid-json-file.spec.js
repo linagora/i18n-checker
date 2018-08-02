@@ -53,4 +53,16 @@ describe('The valid-json-file rule', function() {
       done();
     });
   });
+
+  it('should detect valid JSON unflattened file', function(done) {
+    options.verifyOptions.locales = ['unflattened'];
+    options.verifyOptions.defaultLocale = 'unflattened';
+
+    lib(options, (err, resp) => {
+      expect(err).to.not.exist;
+      // Expect to be valid
+      expect(resp).to.deep.equal([]);
+      done();
+    });
+  });
 });

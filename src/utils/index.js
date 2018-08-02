@@ -2,6 +2,7 @@ const fs = require('fs');
 const q = require('q');
 const path = require('path');
 const jade = require('./jade');
+const flatten = require('flat');
 
 function listFilesInDir(dirPath) {
   try {
@@ -13,7 +14,7 @@ function listFilesInDir(dirPath) {
 
 function readJsonFile(filePath) {
   try {
-    return require(filePath) || {};
+    return flatten(require(filePath) || {});
   } catch (err) {
     return {};
   }
