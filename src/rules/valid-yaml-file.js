@@ -1,6 +1,6 @@
 const q = require('q');
 const fs = require('fs');
-const jsonValidator = require('json-dup-key-validator');
+const yaml = require('js-yaml');
 const utils = require('../utils');
 
 function check(options) {
@@ -13,14 +13,20 @@ function check(options) {
 
   return q.all(availableFilesPromises)
     .then(files => [].concat(...files))
-    .then(files => files.map(filePath => validateJsonFile(baseDir, filePath)))
+    .then(files => files.map(filePath => validateYamlFile(baseDir, filePath)))
     .then(reports => reports.filter(Boolean));
 }
 
-function validateJsonFile(baseDir, filePath) {
+function validateYamlFile(baseDir, filePath) {
   const fileContent = fs.readFileSync(filePath, 'utf8');
-  const allowDuplicatedKeys = false;
-  const errorMessage = jsonValidator.validate(fileContent, allowDuplicatedKeys);
+  let errorMessage = false;
+
+  try {
+    yaml.safeLoad(fileContent);
+  } catch (error) {
+    const lineNumber = error.message.match(/line (\d+)/)[1];
+    errorMessage = `Failed to load the Yaml file "${filePath}:${lineNumber}" > ${error.message}`;
+  }
 
   if (errorMessage) {
     return {

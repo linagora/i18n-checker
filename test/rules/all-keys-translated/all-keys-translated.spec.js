@@ -13,6 +13,7 @@ describe('The all-keys-translated rule', function() {
         core: true
       }],
       verifyOptions: {
+        fileType: 'yml',
         defaultLocale: 'en',
         rules: ['all-keys-translated']
       }
@@ -25,7 +26,7 @@ describe('The all-keys-translated rule', function() {
     lib(options, (err, resp) => {
       expect(err).to.not.exist;
       expect(resp).to.deep.equal([{
-        filePath: 'core/vi.json',
+        filePath: 'core/vi.yml',
         messages: [
           {
             message: 'unexpected key: \'I\'',
@@ -44,7 +45,7 @@ describe('The all-keys-translated rule', function() {
     lib(options, (err, resp) => {
       expect(err).to.not.exist;
       expect(resp).to.deep.equal([{
-        filePath: 'core/fr.json',
+        filePath: 'core/fr.yml',
         messages: [
           {
             message: 'key missing: \'me\'',

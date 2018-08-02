@@ -22,6 +22,7 @@ Where `options` is an object with:
   * `core`: `true` if current directory contains core locale files. One of the
   directories in the list must be marked as core.
 * `verifyOptions`: options to verify locale files
+  * `fileType`: the fileType of translation files. Possible values: `'yaml'`, `'yml'`, `'json'` - default: `'json'`
   * `defaultLocale`: the default locale (default: `'en'`)
   * `locales`: list of locales (e.g. `['en', 'fr', 'vi']`)
   * `rules`: list of rules to check (omit to check all rules)
@@ -43,6 +44,7 @@ const options = {
     localeDir: 'modules/calendar/i18n/locales'
   }],
   verifyOptions: {
+    fileType: 'json',
     defaultLocale: 'en',
     locales: ['en', 'fr', 'vi'],
     rules: [
@@ -101,6 +103,10 @@ All locale keys defined in a module must be used in that module's template files
 #### valid-json-file
 
 Every translation files must be valid JSON file and has no duplicate keys.
+
+#### valid-yaml-file
+
+Every translation files must be valid YAML file and has no duplicate keys.
 
 ## Development
 
