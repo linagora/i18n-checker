@@ -62,6 +62,19 @@ checker(options, (err, report) {
 });
 ```
 
+### Binary
+
+* Install the binary `npm install -g i18n-checker`
+* Put the options in file `.i18n-lintrc.js`
+```javascript
+module.exports = {
+    baseDir: __dirname,
+    ...
+};
+```
+* Run `i18n-checker [path/to/.i18n-lintrc.js]`
+  * By default, `i18n-checker` will find the file in working directory
+
 ### Rules
 
 #### all-keys-translated

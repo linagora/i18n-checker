@@ -6,6 +6,9 @@
   "scripts": {
     "test": "grunt"
   },
+  "bin": {
+    "i18n-checker": "bin/i18n-checker.js"
+  },
   "keywords": [
     "i18n",
     "translation",
