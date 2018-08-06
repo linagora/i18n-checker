@@ -77,6 +77,10 @@ module.exports = {
 
 ### Rules
 
+#### all-keys-sorted
+
+All keys must be sorted in translation files.
+
 #### all-keys-translated
 
 All keys translated in default locale must be translated in other locales.
