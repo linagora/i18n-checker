@@ -28,4 +28,18 @@ describe('The utils/index module', function() {
       ]);
     });
   });
+
+  it('should read flat keys in right order', function() {
+    const unsortedKeys = Object.keys(lib.flatten({ b: 'value', a: 'value' }));
+    expect(unsortedKeys).to.deep.equal(['b', 'a']);
+
+    const sortedNestedKeys = Object.keys(lib.flatten({ a: { a: 'a.a', b: 'a.b' }, b: 'b' }));
+    expect(sortedNestedKeys).to.deep.equal(['a.a', 'a.b', 'b']);
+
+    const sortedKeys = Object.keys(lib.flatten({ a: 'value', b: 'value' }));
+    expect(sortedKeys).to.deep.equal(['a', 'b']);
+
+    const unsortedNestedKeys = Object.keys(lib.flatten({ a: { b: 'a.b', a: 'a.a' }, b: 'b' }));
+    expect(unsortedNestedKeys).to.deep.equal(['a.b', 'a.a', 'b']);
+  });
 });
