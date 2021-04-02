@@ -4,9 +4,9 @@ const utils = require('../utils');
 
 function check(options) {
   const { baseDir, dirs, verifyOptions } = options;
-  const { locales } = verifyOptions;
+  const { locales, fileType } = verifyOptions;
 
-  const requiredFiles = locales.map(locale => `${locale}.json`);
+  const requiredFiles = locales.map(locale => `${locale}.${fileType}`);
   const reports = [
     ...dirs.map(dir => checkDir(baseDir, dir.localeDir, requiredFiles))
   ];

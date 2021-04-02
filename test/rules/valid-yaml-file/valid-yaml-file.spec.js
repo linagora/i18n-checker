@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const lib = require('../../../src');
 
-describe('The valid-json-file rule', function() {
+describe('The valid-yaml-file rule', function() {
   const baseDir = `${__dirname}/fixture`;
   let options;
 
@@ -13,22 +13,23 @@ describe('The valid-json-file rule', function() {
         core: true
       }],
       verifyOptions: {
-        rules: ['valid-json-file']
+        fileType: 'yaml',
+        rules: ['valid-yaml-file']
       }
     };
   });
 
-  it('should detect invalid syntax JSON file', function(done) {
+  it('should detect invalid syntax yaml file', function(done) {
     options.verifyOptions.locales = ['invalid-syntax'];
     options.verifyOptions.defaultLocale = 'invalid-syntax';
 
     lib(options, (err, resp) => {
       expect(err).to.not.exist;
       expect(resp).to.deep.equal([{
-        filePath: 'core/invalid-syntax.json',
+        filePath: 'core/invalid-syntax.yaml',
         messages: [{
-          message: 'Syntax error near ey": value',
-          ruleId: 'valid-json-file',
+          message: `Failed to load the Yaml file "${__dirname}/fixture/core/invalid-syntax.yaml:2" > bad indentation of a mapping entry at line 2, column 6:\n      bar: value\n         ^`,
+          ruleId: 'valid-yaml-file',
           severity: 2
         }]
       }]);
@@ -43,10 +44,10 @@ describe('The valid-json-file rule', function() {
     lib(options, (err, resp) => {
       expect(err).to.not.exist;
       expect(resp).to.deep.equal([{
-        filePath: 'core/duplicate-key.json',
+        filePath: 'core/duplicate-key.yaml',
         messages: [{
-          message: 'Syntax error: duplicated keys "key" near "key": "du',
-          ruleId: 'valid-json-file',
+          message: `Failed to load the Yaml file "${__dirname}/fixture/core/duplicate-key.yaml:2" > duplicated mapping key at line 2, column 1:\n    key: duplicate\n    ^`,
+          ruleId: 'valid-yaml-file',
           severity: 2
         }]
       }]);
@@ -54,7 +55,7 @@ describe('The valid-json-file rule', function() {
     });
   });
 
-  it('should detect valid JSON unflattened file', function(done) {
+  it('should detect valid YAML unflattened file', function(done) {
     options.verifyOptions.locales = ['unflattened'];
     options.verifyOptions.defaultLocale = 'unflattened';
 

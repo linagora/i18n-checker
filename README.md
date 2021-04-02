@@ -25,6 +25,7 @@ Where `options` is an object with:
   * `core`: `true` if current directory contains core locale files. One of the
   directories in the list must be marked as core.
 * `verifyOptions`: options to verify locale files
+  * `fileType`: the fileType of translation files. Possible values: `'yaml'`, `'yml'`, `'json'` - default: `'json'`
   * `defaultLocale`: the default locale (default: `'en'`)
   * `locales`: list of locales (e.g. `['en', 'fr', 'vi']`)
   * `rules`: list of rules to check (omit to check all rules)
@@ -46,6 +47,7 @@ const options = {
     localeDir: 'modules/calendar/i18n/locales'
   }],
   verifyOptions: {
+    fileType: 'json',
     defaultLocale: 'en',
     locales: ['en', 'fr', 'vi'],
     rules: [
@@ -62,6 +64,19 @@ checker(options, (err, report) {
   reporter(report);
 });
 ```
+
+### Binary
+
+* Install the binary `npm install -g i18n-checker`
+* Put the options in file `.i18n-lintrc.js`
+```javascript
+module.exports = {
+    baseDir: __dirname,
+    ...
+};
+```
+* Run `i18n-checker [path/to/.i18n-lintrc.js]`
+  * By default, `i18n-checker` will find the file in working directory
 
 ### Rules
 
@@ -104,6 +119,10 @@ All locale keys defined in a module must be used in that module's template files
 #### valid-json-file
 
 Every translation files must be valid JSON file and has no duplicate keys.
+
+#### valid-yaml-file
+
+Every translation files must be valid YAML file and has no duplicate keys.
 
 ## Development
 

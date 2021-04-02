@@ -4,27 +4,27 @@ const utils = require('../utils');
 
 function check(options) {
   const { baseDir, dirs, verifyOptions } = options;
-  const { locales, defaultLocale } = verifyOptions;
+  const { locales, defaultLocale, fileType } = verifyOptions;
 
   const availableFilesPromises = [
-    ...dirs.map(dir => utils.getAvailableLocaleFilesInDir(baseDir, dir.localeDir, locales))
+    ...dirs.map(dir => utils.getAvailableLocaleFilesInDir(baseDir, dir.localeDir, locales, fileType))
   ];
 
   return q.all(availableFilesPromises)
-    .then(folders => folders.map(filesInFolder => validate(filesInFolder, defaultLocale)))
+    .then(folders => folders.map(filesInFolder => validate(filesInFolder, fileType, defaultLocale)))
     .then(report => [].concat(...report))
     .then(reports => reports.filter(Boolean));
 }
 
-function validate(files, defaultLocale) {
-  const defaultLocaleFile = _.find(files, file => _.endsWith(file, `${defaultLocale}.json`));
+function validate(files, fileType, defaultLocale) {
+  const defaultLocaleFile = _.find(files, file => _.endsWith(file, `${defaultLocale}.${fileType}`));
   const otherLocaleFiles = files.filter(file => (file !== defaultLocaleFile));
 
-  const defaultLocaleContent = utils.readJsonFile(defaultLocaleFile);
+  const defaultLocaleContent = utils.readFile(defaultLocaleFile);
   const defaultLocaleKeys = Object.keys(defaultLocaleContent);
 
   return otherLocaleFiles.map((filePath) => {
-    const otherLocaleContent = utils.readJsonFile(filePath);
+    const otherLocaleContent = utils.readFile(filePath);
     const otherLocaleKeys = Object.keys(otherLocaleContent);
     const messages = [];
 
