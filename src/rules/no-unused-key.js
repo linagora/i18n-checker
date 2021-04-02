@@ -6,7 +6,7 @@ const utils = require('../utils');
 
 function check(options) {
   const { baseDir, dirs, verifyOptions } = options;
-  const { defaultLocale } = verifyOptions;
+  const { defaultLocale, fileType } = verifyOptions;
 
   const totalKeysInTemplate = [];
   const report = dirs.map((dir) => {
@@ -14,8 +14,8 @@ function check(options) {
       return;
     }
 
-    const localeFile = path.join(baseDir, dir.localeDir, `${defaultLocale}.json`);
-    const localeKeys = utils.getKeysInJsonFile(localeFile);
+    const localeFile = path.join(baseDir, dir.localeDir, `${defaultLocale}.${fileType}`);
+    const localeKeys = utils.getKeysInFile(localeFile);
     const keysInDir = getKeysInDir(baseDir, dir);
 
     totalKeysInTemplate.push(...keysInDir);
@@ -39,8 +39,8 @@ function check(options) {
   const coreDir = dirs.filter(dir => dir.core)[0];
 
   if (coreDir.templateSrc) {
-    const coreLocaleFile = path.join(baseDir, coreDir.localeDir, `${defaultLocale}.json`);
-    const coreLocaleKeys = utils.getKeysInJsonFile(coreLocaleFile);
+    const coreLocaleFile = path.join(baseDir, coreDir.localeDir, `${defaultLocale}.${fileType}`);
+    const coreLocaleKeys = utils.getKeysInFile(coreLocaleFile);
     const keysInCoreTemplate = getKeysInDir(baseDir, coreDir);
     const messages = [];
 

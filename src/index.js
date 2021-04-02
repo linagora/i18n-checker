@@ -2,7 +2,7 @@ const q = require('q');
 const path = require('path');
 const fs = require('fs');
 const utils = require('./utils');
-const { DEFAULT_LOCALE } = require('./constants');
+const { DEFAULT_LOCALE, FILE_TYPE_ALLOWED } = require('./constants');
 
 const rulesDir = path.join(__dirname, 'rules');
 const AVAILABLE_RULES = fs.readdirSync(rulesDir)
@@ -46,6 +46,15 @@ function checker(options, callback) {
 
   if (!options.verifyOptions.locales) {
     return callback(new Error('options.verifyOptions.locales is required'));
+  }
+
+  if (!options.verifyOptions.fileType) {
+    // Set the default value
+    options.verifyOptions.fileType = FILE_TYPE_ALLOWED[0];
+  } else if (options.verifyOptions.fileType
+    && FILE_TYPE_ALLOWED.indexOf(options.verifyOptions.fileType) === -1) {
+    // If option defined, check the value
+    return callback(new Error(`options.verifyOptions.fileType must be one of ${FILE_TYPE_ALLOWED}`));
   }
 
   if (!options.moduleDirs) {
