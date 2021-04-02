@@ -1,0 +1,7 @@
+{
+  "core": "core",
+  "nested": {
+    "prop": "nestedProp"
+  },
+  "other.nested": "otherNestedProp"
+}

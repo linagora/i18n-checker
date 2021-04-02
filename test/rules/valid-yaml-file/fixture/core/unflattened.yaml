@@ -1,0 +1,4 @@
+key: value
+nested:
+  prop: "nested value"
+other.nested.prop: "other nested value"

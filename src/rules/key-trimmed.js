@@ -4,14 +4,14 @@ const utils = require('../utils');
 
 function check(options) {
   const { baseDir, dirs, verifyOptions } = options;
-  const { defaultLocale } = verifyOptions;
-  const defaultLocaleFile = `${defaultLocale}.json`;
+  const { defaultLocale, fileType } = verifyOptions;
+  const defaultLocaleFile = `${defaultLocale}.${fileType}`;
 
   const reports = dirs
     .map(dir => dir.localeDir)
     .map(localeDir => path.join(baseDir, localeDir, defaultLocaleFile))
     .map((filePath) => {
-      const keys = utils.getKeysInJsonFile(filePath);
+      const keys = utils.getKeysInFile(filePath);
       const messages = [];
 
       keys.forEach((key) => {
